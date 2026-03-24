@@ -1,122 +1,137 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const MiActividadApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MiActividadApp extends StatelessWidget {
+  const MiActividadApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
+      title: 'Actividad GridView',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF1E3A8A)),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      // Aquí indicamos que la pantalla principal es directamente nuestro catálogo
+      home: const PantallaCatalogo(), 
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
+class PantallaCatalogo extends StatelessWidget {
+  const PantallaCatalogo({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
+    // Aquí está la lista exacta de 14 elementos (7 filas x 2 columnas)
+    // Cambia los enlaces por las URLs "Raw" de las imágenes en tu GitHub
+    final List<Map<String, dynamic>> catalogo = [
+      {'titulo': 'Biblia de Estudio', 'subtitulo': 'Reina Valera 1960', 'imagen': 'https://raw.githubusercontent.com/Jorge-Dominguez-0486/imagenes-para-flutter-6J-11-02-2026/refs/heads/main/libreria1.png', 'estrellas': 5},
+      {'titulo': 'Diario Devocional', 'subtitulo': 'Mañanas con Dios', 'imagen': 'https://raw.githubusercontent.com/Jorge-Dominguez-0486/imagenes-para-flutter-6J-11-02-2026/refs/heads/main/libreria2.png', 'estrellas': 5},
+      {'titulo': 'Teología Sistemática', 'subtitulo': 'Wayne Grudem', 'imagen': 'https://raw.githubusercontent.com/Jorge-Dominguez-0486/imagenes-para-flutter-6J-11-02-2026/refs/heads/main/libreria3.png', 'estrellas': 4},
+      {'titulo': 'El Peregrino', 'subtitulo': 'John Bunyan', 'imagen': 'https://raw.githubusercontent.com/Jorge-Dominguez-0486/imagenes-para-flutter-6J-11-02-2026/refs/heads/main/libro1.png', 'estrellas': 5},
+      {'titulo': 'Diccionario Bíblico', 'subtitulo': 'Ilustrado', 'imagen': 'https://raw.githubusercontent.com/Jorge-Dominguez-0486/imagenes-para-flutter-6J-11-02-2026/refs/heads/main/libros-cristianos-2017.jpg', 'estrellas': 4},
+      {'titulo': 'Liderazgo Espiritual', 'subtitulo': 'J. Oswald Sanders', 'imagen': 'https://raw.githubusercontent.com/Jorge-Dominguez-0486/imagenes-para-flutter-6J-11-02-2026/refs/heads/main/images%20(2).jpg', 'estrellas': 5},
+      {'titulo': 'Comentario Bíblico', 'subtitulo': 'Matthew Henry', 'imagen': 'https://raw.githubusercontent.com/Jorge-Dominguez-0486/imagenes-para-flutter-6J-11-02-2026/refs/heads/main/libros-cristianos.jpg', 'estrellas': 5},
+      {'titulo': 'Vida con Propósito', 'subtitulo': 'Rick Warren', 'imagen': 'https://raw.githubusercontent.com/Jorge-Dominguez-0486/imagenes-para-flutter-6J-11-02-2026/refs/heads/main/images%20(3).jpg', 'estrellas': 4},
+      {'titulo': 'Mero Cristianismo', 'subtitulo': 'C.S. Lewis', 'imagen': 'https://raw.githubusercontent.com/Jorge-Dominguez-0486/imagenes-para-flutter-6J-11-02-2026/refs/heads/main/images%20(4).jpg', 'estrellas': 5},
+      {'titulo': 'Biblia Apologética', 'subtitulo': 'Edición especial', 'imagen': 'https://raw.githubusercontent.com/Jorge-Dominguez-0486/imagenes-para-flutter-6J-11-02-2026/refs/heads/main/images%20(6).jpg', 'estrellas': 4},
+      {'titulo': 'Historia de la Iglesia', 'subtitulo': 'Justo L. González', 'imagen': 'https://raw.githubusercontent.com/Jorge-Dominguez-0486/imagenes-para-flutter-6J-11-02-2026/refs/heads/main/experimentar-la-paz-de-dios-elizabeth-george.jpg', 'estrellas': 5},
+      {'titulo': 'Crianza con Gracia', 'subtitulo': 'Para padres', 'imagen': 'https://raw.githubusercontent.com/Jorge-Dominguez-0486/imagenes-para-flutter-6J-11-02-2026/refs/heads/main/b0cea70055e7853adb71dccf55ce42bc.jpg', 'estrellas': 4},
+      {'titulo': 'El Dios que Adoramos', 'subtitulo': 'A.W. Tozer', 'imagen': 'https://raw.githubusercontent.com/Jorge-Dominguez-0486/imagenes-para-flutter-6J-11-02-2026/refs/heads/main/5bdc059a96df50b719c7d68e3f022458.jpg', 'estrellas': 5},
+      {'titulo': 'Himnario Cristiano', 'subtitulo': 'Letras y partituras', 'imagen': 'https://raw.githubusercontent.com/Jorge-Dominguez-0486/imagenes-para-flutter-6J-11-02-2026/refs/heads/main/517Sc39WYUL._SX355_BO1_204_203_200.jpg', 'estrellas': 4},
+    ];
+
     return Scaffold(
       appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+        title: const Text(
+          'Librería Cristiana', 
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)
+        ),
+        backgroundColor: const Color(0xFF1E3A8A),
+        centerTitle: true,
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text('You have pushed the button this many times:'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
+      backgroundColor: Colors.grey[100],
+      body: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: GridView.builder(
+          itemCount: catalogo.length, // Carga los 14 elementos
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2, // Las 2 columnas que te pidieron
+            crossAxisSpacing: 12, // Espacio entre columnas
+            mainAxisSpacing: 12, // Espacio entre filas
+            childAspectRatio: 0.58, // Ajusta la altura de la tarjeta para que quepan los textos
+          ),
+          itemBuilder: (context, index) {
+            final item = catalogo[index];
+            return Card(
+              elevation: 4,
+              shadowColor: Colors.black26,
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  // La Imagen desde GitHub
+                  Expanded(
+                    child: ClipRRect(
+                      borderRadius: const BorderRadius.vertical(top: Radius.circular(15)),
+                      child: Image.network(
+                        item['imagen'],
+                        fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) => Container(
+                          color: Colors.grey[300],
+                          child: const Center(
+                            child: Icon(Icons.image_not_supported, size: 40, color: Colors.grey),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  // La parte inferior con las 3 filas requeridas
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        // Fila 1: Título
+                        Text(
+                          item['titulo'],
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14, color: Color(0xFF1E3A8A)),
+                        ),
+                        const SizedBox(height: 4),
+                        // Fila 2: Subtítulo
+                        Text(
+                          item['subtitulo'],
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(fontSize: 12, color: Colors.black54),
+                        ),
+                        const SizedBox(height: 6),
+                        // Fila 3: Estrellitas
+                        Row(
+                          children: List.generate(5, (starIndex) {
+                            return Icon(
+                              starIndex < item['estrellas'] ? Icons.star : Icons.star_border,
+                              size: 16,
+                              color: Colors.amber,
+                            );
+                          }),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            );
+          },
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
